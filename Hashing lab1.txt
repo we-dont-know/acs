@@ -1,0 +1,23 @@
+#md5 hashing technique
+
+echo -n "Hello world" | md5sum | tr -d ' -' > hashes.txt
+
+cat hashes.txt
+
+# dictionary attack
+
+hashcat -m 0 -a 0 -o p1.txt hashes.txt /usr/share/wordlists/rockyou.txt
+
+
+cat p1.txt
+
+#SHA-256 hashing technique
+
+echo -n "hello" | sha256sum | tr –d ' –' > shahash.txt
+
+cat shahash.txt
+
+#bruteforce attack
+
+hashcat -m 0 -a 3 shahash.txt ?a?a?a?a?a --show
+
